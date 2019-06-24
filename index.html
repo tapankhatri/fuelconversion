@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Fuel Cost Conversion</title>
+        <link rel="stylesheet" href="https://assets.ctl.io/chi/1.2.2/chi.css">
+        <script src="https://assets.ctl.io/chi/1.2.2/js/chi.js"></script>
+    </head>
+    <body class="chi" onload="load_data()">
+        <div class="a-backdrop">
+            <div class="a-modal" id="main_modal">
+                <div class="a-modal__header">
+                    <h3 class="a-modal__title">Convert cost of fuel accross major currencies</h3>
+                    <button class="a-btn -icon -close">
+                    <div class="a-btn__content">
+                        <i class="a-icon icon-x"></i>
+                    </div>
+                    </button>
+                </div>
+                <div class="a-modal__content">
+                    <p class="-text -m--0"></p>
+                    <div class="a-inputWrapper -floatingLabel -mb--1">
+                        <input class="a-input -xl" type="number" id="input_price" placeholder="Fuel Price">
+                    </div>
+                    <div class="a-inputWrapper -floatingLabel -mb--1">
+                        <select id="input_currency" class="a-input -xl">
+                            <option></option>
+                        </select>
+                        <label for="input_currency" class="label">Input Currency</label>
+                    </div>
+                    <div class="a-inputWrapper -floatingLabel -mb--1">
+                        <div class="m-formGroup -inline">
+                            <input class="a-input -xl" type="radio" name="input_unit" id="input_unit_gallon">
+                            <label for="input_unit_gallon"></label>
+                            <label class="-text" for="input_unit_gallon">Per Gallon</label>
+                        </div>
+                        <div class="m-formGroup -inline">
+                            <input class="a-input -xl" type="radio" name="input_unit" id="input_unit_liter">
+                            <label for="input_unit_liter"></label>
+                            <label class="-text" for="input_unit_liter">Per Liter</label>
+                        </div>
+                    </div>
+                    <div class="a-divider -colorbar -bt--4"></div><br>
+                    <div class="a-inputWrapper -floatingLabel -mb--1">
+                        <select id="output_currency" class="a-input -xl">
+                            <option></option>
+                        </select>
+                        <label for="output_currency" class="label">Output Currency</label>
+                    </div>
+                    <div class="a-inputWrapper -floatingLabel -mb--1">
+                        <div class="m-formGroup -inline">
+                            <input class="a-input -xl" type="radio" name="output_unit" id="output_unit_gallon">
+                            <label for="output_unit_gallon"></label>
+                            <label class="-text" for="output_unit_gallon">Per Gallon</label>
+                        </div>
+                        <div class="m-formGroup -inline">
+                            <input class="a-input -xl" type="radio" name="output_unit" id="output_unit_liter">
+                            <label for="output_unit_liter"></label>
+                            <label class="-text" for="output_unit_liter">Per Liter</label>
+                        </div>
+                    </div>
+                    <div class="a-divider -colorbar -bt--4"></div><br>
+                    <div class="m-alert -bubble -muted -xl" role="alert" id="output_price">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="fuel_conversion.js"></script>
+
+    </body>
+</html>
