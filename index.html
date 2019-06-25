@@ -4,13 +4,12 @@
         <meta charset="UTF-8" />
         <title>Fuel Cost Conversion</title>
         <link rel="stylesheet" href="https://assets.ctl.io/chi/1.2.2/chi.css">
-        <script src="https://assets.ctl.io/chi/1.2.2/js/chi.js"></script>
     </head>
     <body class="chi" onload="load_data()">
         <div class="a-backdrop">
             <div class="a-modal" id="main_modal">
                 <div class="a-modal__header">
-                    <h3 class="a-modal__title">Convert cost of fuel accross major currencies</h3>
+                    <h3 class="a-modal__title">Convert cost of fuel across major currencies</h3>
                     <button class="a-btn -icon -close">
                     <div class="a-btn__content">
                         <i class="a-icon icon-x"></i>
@@ -19,10 +18,11 @@
                 </div>
                 <div class="a-modal__content">
                     <p class="-text -m--0"></p>
-                    <div class="a-inputWrapper -floatingLabel -mb--1">
-                        <input class="a-input -xl" type="number" id="input_price" placeholder="Fuel Price">
+                    <div id="input_price_div" class="a-inputWrapper -floatingLabel -mb--1">
+                        <input class="a-input -xl" type="number" id="input_price">
+                        <label for="input_price">Fuel Price</label>
                     </div>
-                    <div class="a-inputWrapper -floatingLabel -mb--1">
+                    <div id="input_currency_div" class="a-inputWrapper -floatingLabel -mb--1">
                         <select id="input_currency" class="a-input -xl">
                             <option></option>
                         </select>
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                     <div class="a-divider -colorbar -bt--4"></div><br>
-                    <div class="a-inputWrapper -floatingLabel -mb--1">
+                    <div id="output_currency_div" class="a-inputWrapper -floatingLabel -mb--1">
                         <select id="output_currency" class="a-input -xl">
                             <option></option>
                         </select>
@@ -68,6 +68,7 @@
         </div>
 
         <script src="fuel_conversion.js"></script>
+        <script src="https://assets.ctl.io/chi/1.2.2/js/chi.js"></script>
 
     </body>
 </html>

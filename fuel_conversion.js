@@ -1,17 +1,44 @@
+this.currency_options = {}
+
 function load_data() {
-    this.get_currency_details();
+    chi.floatingLabel(document.getElementById('input_price_div'));
+    chi.floatingLabel(document.getElementById('input_currency_div'));
+    chi.floatingLabel(document.getElementById('output_currency_div'));
+    this.fetch_currency_details();
 }
 
-function get_currency_details() {
-    var exchange_rates_api = new XMLHttpRequest();
-    exchange_rates_api.onreadystatechange = function() {
-         if (this.readyState == 4 && this.status == 200) {
-            alert(this.responseText);
-         } else {
-            //alert("Error occured while fetching rates")
-         }
-    };
-    exchange_rates_api.open("GET", "https://api.exchangeratesapi.io/latest", true);
-    exchange_rates_api.setRequestHeader("Content-type", "application/json");
-    exchange_rates_api.send();
+function fetch_currency_details() {
+    fetch('https://api.exchangeratesapi.io/latest')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(exchange_rates) {
+            log_exchange_rates(exchange_rates);
+        });
+}
+
+function log_exchange_rates(exchange_rates) {
+    this.currency_options[exchange_rates.base] = 1
+
+    for (var k in exchange_rates.rates) {
+        if (exchange_rates.rates.hasOwnProperty(k)) {
+           this.currency_options[k] = exchange_rates.rates[k];
+        }
+    }
+
+    console.log(this.currency_options);
+    this.update_currency_options();
+}
+
+function update_currency_options() {
+    input_currency_options = document.getElementById("input_currency");
+    output_currency_options = document.getElementById("output_currency");
+
+    keys = Object.keys(this.currency_options);
+    keys.sort();
+    console.log(keys)
+    for (i in keys) {
+        input_currency_options.innerHTML += "<option>"+keys[i]+"</option>";
+        output_currency_options.innerHTML += "<option>"+keys[i]+"</option>";
+    }
 }
