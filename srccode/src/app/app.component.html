@@ -1,0 +1,60 @@
+<h3>{{title}}</h3>
+<div class="a-grid">
+    <div class="a-col">
+        <div id="price_input_label" class="a-inputWrapper -floatingLabel">
+            <input (change)="calcPrice()" [(ngModel)]="srcPrice" class="a-input -xl" type="text" id="price_input">
+            <label for="price_input">Price</label>
+        </div>
+    </div>
+    <div class="a-col">
+        <div id="currency_button_label" class="a-inputWrapper -floatingLabel">
+            <select (change)="calcPrice()" [(ngModel)]="srcCurrency" class="a-input -xl" id="currency_button">
+              <option></option>
+              <option *ngFor='let currency of exchangeClass.currencies'> {{currency}} </option>
+            </select>
+            <label for="currency_button">Input Currency</label>
+        </div>
+    </div>
+    <div class="a-col">
+        <div id="volume_button_label" class="a-inputWrapper -floatingLabel">
+            <select (change)="calcPrice()" [(ngModel)]="srcVolume" class="a-input -xl" id="volume_button">
+              <option></option>
+              <option>Gallons</option>
+              <option>Liters</option>
+            </select>
+            <label for="volume_button">Input Volume</label>
+        </div>
+    </div>
+</div>
+
+<div class="a-grid">
+    <div class="a-col">
+        <div id="price_output_label" class="a-inputWrapper -floatingLabel">
+            <input class="a-input -xl" type="text" id="price_output" disabled>
+            <label for="price_output">{{dstPrice}}</label>
+        </div>
+    </div>
+    <div class="a-col">
+        <div id="currency_output_button_label" class="a-inputWrapper -floatingLabel">
+            <select (change)="calcPrice()" [(ngModel)]="dstCurrency" class="a-input -xl" id="currency_output_button">
+              <option></option>
+              <option *ngFor='let currency of exchangeClass.currencies'> {{currency}} </option>
+            </select>
+            <label for="currency_output_button">Output Currency</label>
+        </div>
+    </div>
+    <div class="a-col">
+        <div id="volume_output_button_label" class="a-inputWrapper -floatingLabel">
+            <select (change)="calcPrice()" [(ngModel)]="dstVolume" class="a-input -xl" id="volume_output_button">
+              <option></option>
+              <option>Gallons</option>
+              <option>Liters</option>
+            </select>
+            <label for="volume_output_button">Output Volume</label>
+        </div>
+    </div>
+</div>
+
+<script src="https://assets.ctl.io/chi/1.2.5/js/chi.js"></script>
+
+<router-outlet></router-outlet>
